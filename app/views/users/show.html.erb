@@ -1,9 +1,9 @@
+<% @books.each do |book| %>
 <div>
-  <p><%= @book.user.name %></p>
-  <p><%= @book.title %></p>
-  <p><%= @book.body %></p>
-  <%= link_to edit_user_path(@book.id) do %>
-  <p>edit</p>
+  <%= link_to book_path(book.id) do %>
+  <p><%= book.title %></p>
   <% end %>
-  
+  <p><%= book.body %></p>
 </div>
+<% end %>
+
