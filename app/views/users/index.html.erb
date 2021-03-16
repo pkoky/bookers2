@@ -14,10 +14,10 @@
 <div>
   <p><%= book.user.name %></p>
   <p><%= book.title %></p>
-  
+  <%= link_to user_path(book.id) do %>
   <p>Show</p>
-  
-  
+  <% end %>
 </div>
+
 
 <% end %>
