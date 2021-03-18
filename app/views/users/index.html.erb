@@ -1,3 +1,4 @@
+
 <h1>New Book</h1>
 <%= form_with model: @book, local:true do |f| %>
 <h4>Title</h4>
@@ -10,14 +11,13 @@
 
 
 
-<% @books.each do |book| %>
+<% @users.each do |user| %>
 <div>
-  <p><%= book.user.name %></p>
-  <p><%= book.title %></p>
-  
+  <p><%= user.name %></p>
+  <%= link_to user_path(user.id) do %>
   <p>Show</p>
-  
-  
+  <% end %>
 </div>
+
 
 <% end %>
