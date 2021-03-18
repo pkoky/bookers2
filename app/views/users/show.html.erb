@@ -1,4 +1,4 @@
-<%= attachment_image_tag @user, :profile_image, format: "jpeg", size: "100x100" %>
+<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image_square.jpeg" %>
 <p>name</p>
 <%= @user.name %>
 <p>introduction</p>

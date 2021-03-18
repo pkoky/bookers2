@@ -2,7 +2,7 @@
 <%= form_with model:@user, local:true do |f| %>
     <label>Name</label>
     <%= f.text_field :name %>
-    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60 %>
+    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image_square.jpeg" %>
     <label>Image</label>
     <%= f.attachment_field :profile_image %>
     <label>introduction</label>
