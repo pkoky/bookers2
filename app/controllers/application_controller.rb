@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-   before_action :authenticate_user!,except: [:top]
+    # application_controllerは全てのページに適用
+    # ログインしていないユーザーを弾く[　]内は適用を外すアクション名　
+   before_action :authenticate_user!,except: [:top,:about]
   
    before_action :configure_permitted_parameters, if: :devise_controller?
    

@@ -1,9 +1,7 @@
-<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image_square.jpeg" %>
-<p>name</p>
-<%= @user.name %>
-<p>introduction</p>
-<%= @user.introduction %>
-<p><%= link_to "edit", edit_user_path(@user.id) %></p>
+<%= render 'users/list', user: @users, book: @book %>
+
+
+
 
 
 <% @books.each do |book| %>

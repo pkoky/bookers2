@@ -4,6 +4,8 @@
 <%= user.name %>
 <p>introduction</p>
 <%= user.introduction %>
+<p><%= link_to "edit", edit_user_path(@user.id) %></p>
+
 
 <h1>New Book</h1>
 <%= form_with model: book, local:true do |f| %>

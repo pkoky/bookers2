@@ -15,6 +15,9 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    # 部分テンプレート用
+    @user = current_user
+    @booknew = Book.new
   end
 
   def edit
@@ -26,7 +29,7 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
   end
-  
+
   def update
     @book = Book.find(params[:id])
     @book.update(book_params)

@@ -1,4 +1,9 @@
+<%= render 'users/list', user: @user, book: @booknew %>
+
+
 <div>
+<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image_square.jpeg" %>
+
 <p><%= @book.user.name %></p>
 <p><%= @book.title %></p>
 <p><%= @book.body %></p>
