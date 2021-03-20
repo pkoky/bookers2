@@ -17,6 +17,9 @@
 ログインしていない場合、 else から end 間のコードが表示されます。-->
     <% if user_signed_in? %>
      <li>
+       <%= link_to "Bookers", root_path %>
+     </li>
+     <li>
        <%= link_to "home", user_path(current_user.id) %>
      </li>
      <li>
@@ -44,6 +47,8 @@
         <%=link_to "login", new_user_session_path %>
       </li>
     <% end %>
+    <p id="notice"><%= flash[:notice] %></p>
+
 
     <%= yield %>
     <footer>CopyRight Infratop.inc</footer>

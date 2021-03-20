@@ -1,17 +1,25 @@
 <%= render 'users/list', user: @users, book: @book %>
 
 
+<h1>Books</h1>
 
-
-
-<% @books.each do |book| %>
-<div>
-  <h4>Title</h4>
-  <%= link_to book_path(book.id) do %>
-  <p><%= book.title %></p>
+<table>
+  <thead>
+    <th></th>
+    <th>Title</th>
+    <th>Opinion</th>
+  </thead>
+  <% @books.each do |book| %>
+  <tr>
+    <td>
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image_square.jpeg" %>
+    </td>
+    <td>
+      <%= link_to book_path(book.id) do %>
+        <%= book.title %>
+      <% end %>
+    </td>
+    <td><%= book.body %></td>
   <% end %>
-  <h4>Opinion</h4>
-  <p><%= book.body %></p>
-</div>
-<% end %>
-
+  </tr>
+</table>
