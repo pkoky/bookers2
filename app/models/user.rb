@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :books, dependent: :destroy
+  
+  # refileを使用するうえでのルール。
   attachment :profile_image
   
   validates :name, uniqueness: true, length: { minimum: 2, maximum: 20 }
