@@ -20,12 +20,10 @@
           <span>
             <%= link_to "Bookers", root_path, class: "navbar-brand" %>
           </span>
-
-        <!-- if user_signed_in? は、devise側で用意しているヘルパーです。
-        ログイン済みならばtrueが、ログインしていなければfalseが返されます。
-        ログイン済みの場合、if user_signed_in? から else 間のコードが表示されます。
-        ログインしていない場合、 else から end 間のコードが表示されます。-->
-          <div class="collapse navbar-collapse" id="navbarNavDropfown">
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li>
@@ -40,11 +38,7 @@
                 <li>
                   <%= link_to "logout", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %>
                 </li>
-
-
-
               <% else %>
-
                 <li>
                   <%= link_to "Home", root_path, class: "fas fa-home nav-link text-light" %>
                 </li>
