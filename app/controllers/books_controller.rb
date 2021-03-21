@@ -22,17 +22,17 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     # 部分テンプレート用
-    @user = current_user
+    @user = @book.user
     @booknew = Book.new
   end
 
   def edit
     @book = Book.find(params[:id])
     if
-      @book == current_user
+      @book.user == current_user
     else
       redirect_to books_path
-    end 
+    end
   end
 
   def destroy
@@ -45,7 +45,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if @book.update(book_params)
       flash[:notice] = "You have updated book successfully."
-       redirect_to books_path
+       redirect_to book_path(@book.id)
     else
       render :edit
     end
