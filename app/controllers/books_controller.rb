@@ -24,6 +24,7 @@ class BooksController < ApplicationController
     # 部分テンプレート用
     @user = @book.user
     @booknew = Book.new
+    @book_comment = BookComment.new
   end
 
   def edit
