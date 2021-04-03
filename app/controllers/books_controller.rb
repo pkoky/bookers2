@@ -28,11 +28,6 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    if
-      @book.user == current_user
-    else
-      redirect_to books_path
-    end
   end
 
   def destroy
@@ -51,11 +46,20 @@ class BooksController < ApplicationController
     end
   end
 
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
 
   private
 
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+
+  def ensure_correct_user #ensure = 確実にする、保証する
+    @book = Book.find(params[:id])
+    unless @book.user == current_user #[否定の条件を表わして] …でない限り，もし…でなければ; …なら話は別だが
+      redirect_to books_path
+    end
   end
 
 end
