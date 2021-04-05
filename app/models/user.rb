@@ -29,10 +29,40 @@ class User < ApplicationRecord
     follower.find_by(followed_id: user_id).destroy
   end
 
-# 現在のユーザーがフォローしていたらtrueを返す
+  # 現在のユーザーがフォローしていたらtrueを返す
   def following?(user)
     following.include?(user)
   end
+
+
+  #検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      #@user = User.where("name=?", word)#sqlには変数が存在しない。
+      @user = User.where(name: word)
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?", "#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?", "%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?", "%#{word}%")
+    else
+      @user = User.all
+    end
+  end
+  # 検索フォーム作成時に記載した内容を見返してみてください。
+  # ・完全一致→perfect_match
+  # ・前方一致→forward_match
+  # ・後方一致→backword_match
+  # ・部分一致→partial_match
+  # 送られてきたsearchによって条件分岐させましょう。
+  # そして、whereメソッドを使いデータベースから該当データを取得し、変数に代入します。
+  # 完全一致以外の検索方法は、
+  # #{word}の前後(もしくは両方に)、%を追記することで定義することができます。
+  # これにより、検索方法毎に適した検索が行われるようになりました。
+
+
+
 
 
   # refileを使用するうえでのルール。
@@ -41,3 +71,8 @@ class User < ApplicationRecord
   validates :name, uniqueness: true, length: { minimum: 2, maximum: 20 }
   validates :introduction, length: { maximum: 50 }
 end
+
+fulut = 'strowberry'
+puts "果物は#{fulut}です"
+puts "#{fulut}"
+puts fulut

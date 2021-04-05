@@ -56,6 +56,19 @@
           </div>
         </div>
       </nav>
+      <div class="row">
+            <% if user_signed_in? %>
+              <div class="col-xs-6 col-xs-offset-3 text-center mx-auto" style="margin-top: 25px;">
+                <%= form_with url: search_path, local: true, method: :get do |f| %><!--url: search_path = 検索内容を、作成したルーティングに送信します。-->
+                  <%= f.text_field :word %><!--検索内容をwordとしてアクションに送っている-->
+                  <%= f.select :range, options_for_select([['User'], ['Book']]) %><!--UsermoモデルとBookモデルを選択できるようにしている。洗濯したモデルをrangeとしてアクションに送っている-->
+                  <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致", "backword_match"], ["部分一致","partial_match"]]) %>
+                  <%= f.submit "検索", class: "btn btn-primary" %>
+                  <!--↑検索手法を定義している。選択した検索手法をsearchとしてアクションに送っている-->
+                <% end %>
+              </div>
+            <% end %>
+          </div>
     </header>
     <main>
       <p id="notice"><%= flash[:notice] %></p>
