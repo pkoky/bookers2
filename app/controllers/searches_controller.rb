@@ -1,10 +1,10 @@
 class SearchesController < ApplicationController
 
   def search
-    @range = params[:range]
+    @range = params[:range] #range = 範囲
 
     if @range == "User"
-      @users = User.looks(params[:search], params[:word])
+      @users = User.looks(params[:search], params[:word])#:search, :word はviewから値をとってきている。
     else
       @books = Book.looks(params[:search], params[:word])
     end

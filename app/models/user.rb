@@ -41,7 +41,7 @@ class User < ApplicationRecord
       #@user = User.where("name=?", word)#sqlには変数が存在しない。
       @user = User.where(name: word)
     elsif search == "forward_match"
-      @user = User.where("name LIKE?", "#{word}%")
+      @user = User.where("name LIKE?", "#{word}%")#LIKEは%使うためのもの。０文字以上の任意の文字列。
     elsif search == "backward_match"
       @user = User.where("name LIKE?", "%#{word}")
     elsif search == "partial_match"
