@@ -18,8 +18,8 @@
               <% end %>
             </td>
             <td><%= @book.body %></td>
-            <td>
-              <%= render "favorites/favorite-btn", book: @book %>
+            <td class="favorite-btn_<%= @book.id %>">
+              <%= render "favorites/favorite-btn", book: @book, user: @user %>
             </td>
             <td>
               <p>コメント数:<%= @book.book_comments.count %></p>
@@ -56,7 +56,7 @@
       </table>
       <div class="mt-3">
         <div class="new-comment">
-          <%= form_with(model:[@book, @book_comment], local: true) do |book| %>
+          <%= form_with(model:[@book, @book_comment], local: true) do |book| %><!--remote:true id追加-->
             <%= book.text_area :comment, class: "form-control border border-primary" %>
             <%= book.submit "送信", class: "btn btn-sm btn-success" %>
           <% end %>
