@@ -14,7 +14,7 @@
         </thead>
       <tbody>
         <% @books.each do |book| %>
-          <tr>
+          <tr >
             <!--(book.userで@booksに紐づいたuser情報を引き出している-->
             <td>
             <%= link_to user_path(book.user) do %>
