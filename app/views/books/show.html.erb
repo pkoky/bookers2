@@ -36,27 +36,15 @@
           </tr>
         </tbody>
       </table>
-      <table class="table">
-        <% @book.book_comments.each do |book_comment| %>
-            <tr>
-              <td>
-                <%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, fallback: "no_image_square.jpeg", size: "40x40" %><br/>
-                <%= book_comment.user.name %>
-              </td>
-              <td>
-                <%= book_comment.comment %>
-              </td>
-              <td>
-                <% if book_comment.user == current_user %>
-                  <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-      </table>
+      
+        <div id="comments">
+          <%= render "book_comments/comments", book: @book %>
+        </div>
+        
+      
       <div class="mt-3">
         <div class="new-comment">
-          <%= form_with(model:[@book, @book_comment], local: true) do |book| %><!--remote:true id追加-->
+          <%= form_with(model:[@book, @book_comment]) do |book| %><!-- id追加-->
             <%= book.text_area :comment, class: "form-control border border-primary" %>
             <%= book.submit "送信", class: "btn btn-sm btn-success" %>
           <% end %>
